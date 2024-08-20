@@ -1,12 +1,12 @@
 
-import './App.css';
+
+import Body from './components/Body';
 
 function App() {
   return (
-    <div className="App">
-     after a longtime. buidling a gpt project
-    </div>
+    <Body/>
   );
+  
 }
 
 export default App;
