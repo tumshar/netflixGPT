@@ -1,27 +1,27 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
-import { checkValideData } from '../utils/validate';
+import { checkValidData } from '../utils/validate';
 
 const Login = () => {
 
-const[isSignInForm, setisSignInForm] = useState(true);
-const[errorMessage, seterrorMessage]=useState(null);
-const email=useRef();
-const password=useRef();
+const[isSignInForm, setIsSignInForm] = useState(true);
+const[errorMessage, setErrorMessage]=useState(null);
+
+const email=useRef(null);
+const password=useRef(null);
 
 
 const handleButtonClick = () => {
-  //validate the form data 
+ 
 
-
-console.log(email.current.value);
-console.log(password.current.value);
-const message=checkValideData(email.current.value,password.current.value);
-seterrorMessage(message);
+const message=checkValidData(email.current.value,password.current.value); // in only one line validation is done
+setErrorMessage(message);
 };
+// signin/signup
+
 
   const toggleSignInform = () => {
- setisSignInForm(!isSignInForm); 
+ setIsSignInForm(!isSignInForm); 
   };
 
 
@@ -49,7 +49,7 @@ seterrorMessage(message);
         ref={email}
         type='text' placeholder='email address' 
         className='p-4 my-4 w-full bg-gray-700'/>
- <p className='text-red-800'>{errorMessage} </p>
+ 
 
 
         <input
@@ -57,7 +57,7 @@ seterrorMessage(message);
         type='password' placeholder='password' 
         className='p-4 my-4 w-full bg-gray-700'/>
 
-     
+<p className='text-red-800 font-bold text-lg py-2'>{errorMessage} </p>
         
 
         <button className='p-4 my-6 bg-red-700 w-full right-0 left-0 rounded-lg' 
