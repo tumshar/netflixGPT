@@ -1,37 +1,48 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../utils/validate';
-import {  createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import {  createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+
+
 const Login = () => {
 
 const[isSignInForm, setIsSignInForm] = useState(true);
 const[errorMessage, setErrorMessage]=useState(null);
 const navigate=useNavigate();
 
+
+const name=useRef(null);
 const email=useRef(null);
 const password=useRef(null);
 
 
 const handleButtonClick = () => {
- 
-
 const message=checkValidData(email.current.value,password.current.value); // in only one line validation is done
 setErrorMessage(message);
 
 if(message) return;
 
-// sign in or sign up logic 
-
 if(!isSignInForm){
-  // sign up logic
+  
   createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
-    // Signed up 
+     
     const user = userCredential.user;
-    console.log(user);
-    navigate("/browse");
+    updateProfile(user, {
+      displayName: name.current.value, 
+      photoURL: "https://i.insider.com/5a43d10b4aa6b51d008b715b?width=1200&format=jpeg",
+    })
+    .then(() => {
+      
+      navigate("/browse");
+    })
+    .catch((error) => {
+      
+      setErrorMessage(error.code+"-"+error.message)
+    });
+  
     // ...
   })
   .catch((error) => {
