@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "netflix-be4e9"
-  }
+    "default": "tempo-4f9ec",
+    "dev": "moviegpt-a99c3"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
