@@ -90,18 +90,18 @@ const Login = () => {
           <input 
             ref={name}
             type='text' placeholder='full name'
-            className='p-4 my-4 w-full bg-gray-700'/>
+            className='p-4 my-4 w-full bg-gray-700 text-lg'/>
         )}
 
         <input 
           ref={email}
           type='text' placeholder='email address' 
-          className='p-4 my-4 w-full bg-gray-700'/>
+          className='p-4 my-4 w-full bg-gray-700 text-lg'/>
 
         <input
           ref={password}
           type='password' placeholder='password' 
-          className='p-4 my-4 w-full bg-gray-700'/>
+          className='p-4 my-4 w-full bg-gray-700 text-lg'/>
 
         <p className='text-red-800 font-bold text-lg py-2'>{errorMessage} </p>
 
