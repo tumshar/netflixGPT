@@ -3,7 +3,7 @@ import Header from './Header';
 import { API_OPTIONS } from '../utils/constants';
 import { API_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
-import { addNowPlayingMovies } from '../utils/movieSlice';
+import { addNowPlayingMovies } from "../utils/movieslice";
 
 const Browse = () => {
 const dispatch=useDispatch();
