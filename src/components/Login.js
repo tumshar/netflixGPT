@@ -46,13 +46,13 @@ const Login = () => {
               
             })
             .catch((error) => {
-              setErrorMessage(error.code + "-" + error.message);
+              setErrorMessage(error.code + "************" + error.message);
             });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(errorCode + "*****" + errorMessage);
         });
     } else {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -65,7 +65,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(errorCode + "****" + errorMessage);
         });
     }
   };
