@@ -49,25 +49,32 @@ const Header = () => {
 
 
   return (
-    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
-      <img 
-        className='w-48'
-        src={LOGO}
-        alt='Netflix Logo'
-      />
-      <div className='flex p-2'>
-        {user && user.photoURL ? (
-          <img 
-            className='w-12 h-12'
-            alt="usericon" 
-            src={user.photoURL}
-          />
-        ) : (
-          <div className="w-12 h-12 bg-gray-500 rounded-full"></div> // Placeholder if photoURL is not available
-        )}
-        <button onClick={handleSignOut} className='font-bold text-lg '>Sign out</button>
-      </div>
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+    <img className="w-48" src={LOGO} alt="Netflix Logo" />
+    
+    <div className="flex items-center space-x-4 p-2">
+      {user && user.photoURL ? (
+        <img
+          className="w-12 h-12 rounded-full border-2 border-white shadow-lg object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
+          alt="usericon"
+          src={user.photoURL}
+        />
+      ) : (
+        <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full flex items-center justify-center shadow-lg">
+          <span className="text-white font-bold text-lg">U</span>
+        </div>
+      )}
+  
+  <button
+  onClick={handleSignOut}
+  className=" text-md font-bold text-black bg-gradient-to-r from-red-600 to-red-400 px-6 py-2 rounded-full shadow-md hover:bg-red-500 hover:shadow-xl transition-transform transform hover:scale-105 duration-300 ease-in-out ml-4"
+>
+  Sign Out
+</button>
+
     </div>
+  </div>
+  
   );
 };
 
