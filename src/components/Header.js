@@ -50,7 +50,12 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
-    <img className="w-48" src={LOGO} alt="Netflix Logo" />
+    <img 
+    className="w-80 transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:brightness-125 transform hover:rotate-3"
+    src={LOGO}
+    alt="Netflix Logo" 
+/>
+
     
     <div className="flex items-center space-x-4 p-2">
       {user && user.photoURL ? (

@@ -77,20 +77,20 @@ const Login = () => {
   return (
     <div className='relative h-screen w-screen '>
       <Header/>
-      <div className='absolute inset-0'>
+      <div className='absolute inset-0 '>
         <img 
           src="https://assets.nflxext.com/ffe/siteui/vlv3/20bf1f4d-1c73-48fd-8689-310d6dd80efc/81bdc063-cb8f-4afe-8a02-a3131ca4ef5e/IN-en-20240812-POP_SIGNUP_TWO_WEEKS-perspective_WEB_7998f3b6-63e3-424a-8328-550cf777ddce_large.jpg"
           alt='Netflix back' className='object-cover h-full w-full'/>
       </div>
       <form onSubmit={(e) => e.preventDefault()}
-        className=" w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
+        className=" w-3/12 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white rounded-2xl bg-opacity-80 shadow-lg transition-transform duration-300 hover:scale-105">
         <h1 className='font-bold text-3xl py-4 '>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
 
         {!isSignInForm && (
           <input 
             ref={name}
             type='text' placeholder='full name'
-            className='p-4 my-4 w-full bg-gray-700 text-lg'/>
+            className='p-4 my-4 w-full bg-gray-700 text-lg '/>
         )}
 
         <input 
@@ -105,12 +105,12 @@ const Login = () => {
 
         <p className='text-red-800 font-bold text-lg py-2'>{errorMessage} </p>
 
-        <button className='p-4 my-6 bg-red-700 w-full right-0 left-0 rounded-lg' 
+        <button className='p-4 my-6 bg-red-700 w-full right-0 left-0 rounded-lg font-semibold text-lg' 
           onClick={handleButtonClick}>
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
        
-        <p className='py-4 cursor-pointer' onClick={toggleSignInform}>
+        <p className='py-4 cursor-pointer text-lg text-center hover:underline' onClick={toggleSignInform}>
           {isSignInForm ? "New to Netflix? Sign Up now" : "Email already in use? Sign In now"}
         </p>
       </form>
