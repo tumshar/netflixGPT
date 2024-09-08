@@ -9,8 +9,8 @@ console.log(movies);
             <h1>{title}</h1>
         
         <div>
-            {movies.map((movie)=>(
- <MovieCard key={movie.id} posterPath={movies.poster_path}/>
+            {movies?.map((movie)=>(
+             <MovieCard key={movie.id} posterPath={movie.poster_path}/>
             ))}
        
         </div>
