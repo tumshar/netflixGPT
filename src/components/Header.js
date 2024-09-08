@@ -7,7 +7,7 @@ import { removeUser } from '../utils/userSlice';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constants';
-import { FaEllipsisV } from 'react-icons/fa';
+import { FaEllipsisV, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -77,28 +77,46 @@ const Header = () => {
         {/* 3 dots icon to trigger dropdown */}
         <div className="relative">
           <FaEllipsisV
-            className="text-white text-3xl cursor-pointer" /* Increased the size of the 3-dot icon */
+            className="text-white text-3xl cursor-pointer hover:text-red-500 transition-colors duration-300"
             onClick={toggleDropdown}
           />
           {dropdownOpen && (
             <div
-              className="absolute right-0 mt-2 w-48 bg-gray-900 text-white shadow-lg rounded-lg py-2 z-20"
+              className="absolute right-0 mt-2 w-56 bg-black bg-opacity-90 text-white shadow-lg rounded-lg py-2 z-20 border border-gray-700"
               onMouseLeave={() => setDropdownOpen(false)} // Close dropdown when the mouse leaves
             >
-              <button
-                onClick={handleSignOut}
-                className="block w-full text-left px-6 py-3 text-white bg-gradient-to-r from-red-600 to-red-400 hover:from-red-700 hover:to-red-500 rounded-lg shadow-md font-semibold text-lg transition-all duration-300 ease-in-out mb-2 hover:scale-105"
-              >
-                Sign Out
-              </button>
               <button
                 onClick={() => {
                   setDropdownOpen(false);
                   navigate('/profile');
                 }}
-                className="block w-full text-left px-6 py-3 text-white bg-gradient-to-r from-gray-700 to-gray-500 hover:from-gray-800 hover:to-gray-600 rounded-lg shadow-md font-semibold text-lg transition-all duration-300 ease-in-out hover:scale-105"
+                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
               >
-                Profile
+                <FaUser className="mr-3" /> Profile
+              </button>
+              <button
+                onClick={() => {
+                  setDropdownOpen(false);
+                  navigate('/account');
+                }}
+                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
+              >
+                <FaUser className="mr-3" /> Account
+              </button>
+              <button
+                onClick={() => {
+                  setDropdownOpen(false);
+                  navigate('/settings');
+                }}
+                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
+              >
+                <FaCog className="mr-3" /> Settings
+              </button>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
+              >
+                <FaSignOutAlt className="mr-3" /> Sign Out
               </button>
             </div>
           )}
