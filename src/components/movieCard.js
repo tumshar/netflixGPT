@@ -3,7 +3,7 @@ import { IMG_CDN_URL } from '../utils/constants';
 
 const MovieCard = ({ posterPath, title }) => {
   return (
-    <div className='w-48 m-2 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ease-in-out'>
+    <div className='w-64 m-3 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ease-in-out'>
       <div className='relative pb-[150%]'>
         <img 
           alt={title || "Movie poster"}
@@ -12,8 +12,8 @@ const MovieCard = ({ posterPath, title }) => {
         />
       </div>
       {title && (
-        <div className='p-4'>
-          <h3 className='text-sm font-semibold text-gray-800 truncate'>
+        <div className='p-5'>
+          <h3 className='text-base font-semibold text-gray-800 truncate'>
             {title}
           </h3>
         </div>
