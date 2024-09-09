@@ -3,9 +3,10 @@ import MovieCard from './movieCard';
 
 const MovieList = ({title, movies}) => {
 console.log(movies);
-  return (
-    <div className='p-6'>
-          <h1 className='text-3xl font-semibold py-6'>{title}</h1>
+  return  (
+    movies && (
+    <div className='p-6 '>
+          <h1 className='text-3xl font-semibold py-6 text-white'>{title}</h1>
         <div className='flex overflow-x-scroll'>
           
         
@@ -17,7 +18,7 @@ console.log(movies);
         </div>
         </div>
     </div>
-  )
+    ))
 }
 
 export default MovieList;

@@ -8,14 +8,14 @@ const VideoTitle = ({title,overview}) => {
       <p className='py-6 text-lg w-1/4'>{overview}</p>
       <div className="flex space-x-4">
         <button 
-          className="bg-white text-black py-3 px-8 text-xl rounded-full hover:bg-opacity-80 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center"
+          className="bg-white text-black py-4 px-10 text-2xl rounded-full hover:bg-opacity-80 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center"
         >
-          <FaPlay className="mr-2" /> Play
+          <FaPlay className="mr-3 text-3xl" /> Play
         </button>
         <button 
-          className="bg-gray-500 text-white py-3 px-8 text-xl bg-opacity-50 rounded-full hover:bg-opacity-70 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center"
+          className="bg-gray-500 text-white py-4 px-10 text-2xl bg-opacity-50 rounded-full hover:bg-opacity-70 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center"
         >
-          <FaInfoCircle className="mr-2" /> More Info
+          <FaInfoCircle className="mr-3 text-3xl" /> More Info
         </button>
       </div>
     </div>
