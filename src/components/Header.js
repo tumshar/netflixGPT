@@ -82,41 +82,31 @@ const Header = () => {
           />
           {dropdownOpen && (
             <div
-              className="absolute right-0 mt-2 w-56 bg-black bg-opacity-90 text-white shadow-lg rounded-lg py-2 z-20 border border-gray-700"
+              className="absolute right-0 mt-2 w-64 bg-black bg-opacity-95 text-white shadow-xl rounded-lg py-3 z-20 border border-gray-700 transform transition-all duration-300 ease-in-out"
               onMouseLeave={() => setDropdownOpen(false)} // Close dropdown when the mouse leaves
             >
-              <button
-                onClick={() => {
-                  setDropdownOpen(false);
-                  navigate('/profile');
-                }}
-                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
-              >
-                <FaUser className="mr-3" /> Profile
-              </button>
-              <button
-                onClick={() => {
-                  setDropdownOpen(false);
-                  navigate('/account');
-                }}
-                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
-              >
-                <FaUser className="mr-3" /> Account
-              </button>
-              <button
-                onClick={() => {
-                  setDropdownOpen(false);
-                  navigate('/settings');
-                }}
-                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
-              >
-                <FaCog className="mr-3" /> Settings
-              </button>
+              {['Profile', 'Account', 'Settings'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    navigate(`/${item.toLowerCase()}`);
+                  }}
+                  className="flex items-center w-full text-left px-6 py-4 hover:bg-red-600 transition-colors duration-300 group"
+                >
+                  {item === 'Profile' && <FaUser className="mr-4 text-xl group-hover:text-white" />}
+                  {item === 'Account' && <FaUser className="mr-4 text-xl group-hover:text-white" />}
+                  {item === 'Settings' && <FaCog className="mr-4 text-xl group-hover:text-white" />}
+                  <span className="text-lg font-semibold group-hover:text-white">{item}</span>
+                </button>
+              ))}
+              <div className="border-t border-gray-700 my-2"></div>
               <button
                 onClick={handleSignOut}
-                className="flex items-center w-full text-left px-6 py-3 hover:bg-red-600 transition-colors duration-300"
+                className="flex items-center w-full text-left px-6 py-4 hover:bg-red-600 transition-colors duration-300 group"
               >
-                <FaSignOutAlt className="mr-3" /> Sign Out
+                <FaSignOutAlt className="mr-4 text-xl group-hover:text-white" />
+                <span className="text-lg font-semibold group-hover:text-white">Sign Out</span>
               </button>
             </div>
           )}
