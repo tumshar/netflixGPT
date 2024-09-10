@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constants';
 import { FaEllipsisV, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa'; // Added import for FaSearch
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,16 @@ const Header = () => {
         alt="Netflix Logo"
       />
 
-      <div className="flex items-center space-x-6 p-2"> {/* Increased space between elements */}
+      <div className="flex items-center space-x-6 p-2">
+        {user && (
+          <button
+            className="bg-red-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-red-500/50 transform hover:scale-105 font-bold"
+            onClick={() => {/* Add your GPT Search functionality here */}}
+          >
+            <FaSearch className="text-lg" />
+            <span className="text-sm uppercase tracking-wider">GPT Search</span>
+          </button>
+        )}
         {user && user.photoURL ? (
           <img
             className="w-12 h-12 rounded-full border-2 border-white shadow-lg object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
