@@ -32,6 +32,10 @@ const Header = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const handleGPTSearchClick = () => {
+    
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -66,7 +70,7 @@ const Header = () => {
         {user && (
           <button
             className="bg-red-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-red-500/50 transform hover:scale-105 font-bold"
-            onClick={() => {/* Add your GPT Search functionality here */}}
+            onClick={handleGPTSearchClick}
           >
             <FaSearch className="text-lg" />
             <span className="text-sm uppercase tracking-wider">GPT Search</span>
