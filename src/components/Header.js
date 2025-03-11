@@ -9,7 +9,7 @@ import { addUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constants';
 import { FaEllipsisV, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa'; // Added import for FaSearch
-import { toggleGptSearchView } from '../utils/GPTSlice';
+import { toggleGptSearchView } from '../utils/gptSlice';
 
 const Header = () => {
   const dispatch = useDispatch();

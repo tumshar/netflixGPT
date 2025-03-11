@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+// GptSearchBar.js
+import React, { useState, useEffect } from 'react';
 import { FaSearch, FaMicrophone, FaTimes } from 'react-icons/fa';
 import lang from '../utils/languageConstants';
+import useVoiceSearch from '../hooks/usevoicesearch';
 
 const GPTSearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { isListening, transcript, startListening, stopListening } = useVoiceSearch();
+
+  // Update search term when transcript changes
+  useEffect(() => {
+    if (transcript) {
+      setSearchTerm(transcript);
+    }
+  }, [transcript]);
 
   const handleClear = () => {
     setSearchTerm('');
@@ -11,14 +21,14 @@ const GPTSearchBar = () => {
 
   return (
     <div className="pt-[7%] px-4">
-      <form className='w-full md:w-2/3 mx-auto flex items-center space-x-2'>
-        <div className='flex-grow relative bg-white rounded-lg shadow-md'>
+      <form className="w-full md:w-2/3 mx-auto flex items-center space-x-2">
+        <div className="flex-grow relative bg-white rounded-lg shadow-md">
           <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input 
-            type='text'
+          <input
+            type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='pl-12 pr-24 py-4 w-full rounded-lg bg-gray-100 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white transition duration-300 text-lg'
+            className="pl-12 pr-24 py-4 w-full rounded-lg bg-gray-100 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white transition duration-300 text-lg"
             placeholder={lang.spanish.gptSearchPlaceholder}
           />
           <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
@@ -31,16 +41,24 @@ const GPTSearchBar = () => {
                 <FaTimes size={14} />
               </button>
             )}
-            <FaMicrophone className="text-gray-400 cursor-pointer hover:text-red-500 transition duration-300" size={20} />
+            <button
+              type="button"
+              onClick={isListening ? stopListening : startListening}
+              className={`p-1.5 rounded-full ${
+                isListening ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-600'
+              } hover:text-white hover:bg-gray-500 focus:outline-none transition duration-300`}
+            >
+              <FaMicrophone size={20} />
+            </button>
           </div>
         </div>
-        <button className=' z-20 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition duration-300 font-semibold text-lg shadow-md flex items-center justify-center'>
+        <button className="z-20 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition duration-300 font-semibold text-lg shadow-md flex items-center justify-center">
           <FaSearch className="mr-2" />
           {lang.spanish.search}
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default GPTSearchBar;
