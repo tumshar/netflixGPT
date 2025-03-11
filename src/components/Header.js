@@ -10,6 +10,7 @@ import { LOGO } from '../utils/constants';
 import { FaEllipsisV, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa'; // Added import for FaSearch
 import { toggleGptSearchView } from '../utils/gptSlice';
+import HeaderAIToggle from './HeaderAIToggle';
 
 const Header = () => {
   const dispatch = useDispatch();
